@@ -1,0 +1,190 @@
+ulan@ulan:~/project$ git remote -v
+fatal: не найден git репозиторий (или один из родительских каталогов): .git
+ulan@ulan:~/project$ ls
+serv_kysgyzstan_party
+ulan@ulan:~/project$ cd serv_kysgyzstan_party/
+ulan@ulan:~/project/serv_kysgyzstan_party$ ls
+data                      docker-compose-example.yml  docker-compose.yml  Jenkinsfile  nginx   static  web
+docker-compose-devel.yml  docker-compose-prod.yml     env_example         media        pgdata  venv
+ulan@ulan:~/project/serv_kysgyzstan_party$ git remote -v
+origin	https://github.com/mirsoft-kg/serv_kysgyzstan_party.git (fetch)
+origin	https://github.com/mirsoft-kg/serv_kysgyzstan_party.git (push)
+ulan@ulan:~/project/serv_kysgyzstan_party$ git remote rename
+использование: git remote rename <старое-название> <новое-название>
+
+ulan@ulan:~/project/serv_kysgyzstan_party$ git remote rename origin mirsoft
+ulan@ulan:~/project/serv_kysgyzstan_party$ git remote -v
+mirsoft	https://github.com/mirsoft-kg/serv_kysgyzstan_party.git (fetch)
+mirsoft	https://github.com/mirsoft-kg/serv_kysgyzstan_party.git (push)
+ulan@ulan:~/project/serv_kysgyzstan_party$ git remote add origin https://github.com/skrykg/serv_kysgyzstan_party.git
+ulan@ulan:~/project/serv_kysgyzstan_party$ git remote -v
+mirsoft	https://github.com/mirsoft-kg/serv_kysgyzstan_party.git (fetch)
+mirsoft	https://github.com/mirsoft-kg/serv_kysgyzstan_party.git (push)
+origin	https://github.com/skrykg/serv_kysgyzstan_party.git (fetch)
+origin	https://github.com/skrykg/serv_kysgyzstan_party.git (push)
+ulan@ulan:~/project/serv_kysgyzstan_party$ git status
+На ветке master
+Ваша ветка обновлена в соответствии с «mirsoft/master».
+
+Изменения, которые не в индексе для коммита:
+  (используйте «git add <файл>…», чтобы добавить файл в индекс)
+  (используйте «git checkout -- <файл>…», чтобы отменить изменения
+   в рабочем каталоге)
+
+	изменено:      web/party/locations/admin.py
+	изменено:      web/party/locations/models.py
+	изменено:      web/party/locations/serializers.py
+	изменено:      web/party/locations/views.py
+	изменено:      web/party/urls.py
+
+Неотслеживаемые файлы:
+  (используйте «git add <файл>…», чтобы добавить в то, что будет включено в коммит)
+
+	web/party/locations/migrations/0006_region_district.py
+	web/party/locations/migrations/0007_auto_20200131_0830.py
+
+нет изменений добавленных для коммита
+(используйте «git add» и/или «git commit -a»)
+ulan@ulan:~/project/serv_kysgyzstan_party$ git add
+Ничего не указано, ничего не добавлено.
+Возможно, вы имели в виду «git add .»?
+ulan@ulan:~/project/serv_kysgyzstan_party$ git add .
+ulan@ulan:~/project/serv_kysgyzstan_party$ git status
+На ветке master
+Ваша ветка обновлена в соответствии с «mirsoft/master».
+
+Изменения, которые будут включены в коммит:
+  (используйте «git reset HEAD <файл>…», чтобы убрать из индекса)
+
+	изменено:      web/party/locations/admin.py
+	новый файл:    web/party/locations/migrations/0006_region_district.py
+	новый файл:    web/party/locations/migrations/0007_auto_20200131_0830.py
+	изменено:      web/party/locations/models.py
+	изменено:      web/party/locations/serializers.py
+	изменено:      web/party/locations/views.py
+	изменено:      web/party/urls.py
+
+ulan@ulan:~/project/serv_kysgyzstan_party$ git commit
+[master fd1f542] add district an region endpoints
+ 7 files changed, 188 insertions(+), 9 deletions(-)
+ create mode 100644 web/party/locations/migrations/0006_region_district.py
+ create mode 100644 web/party/locations/migrations/0007_auto_20200131_0830.py
+ulan@ulan:~/project/serv_kysgyzstan_party$ git log
+commit fd1f5426fec5a473a06b5abca1bed73ee8f88cfc (HEAD -> master)
+Author: skrykg <skry_kg@mail.ru>
+Date:   Mon Feb 3 10:37:57 2020 +0600
+
+    add district an region endpoints
+
+commit 0e1e1f0aca492901c2009d9abf27ad03990a4230 (mirsoft/master, mirsoft/HEAD)
+Merge: 45aa0fd b4092dc
+Author: Marat <32132049+Fray23@users.noreply.github.com>
+Date:   Fri Jan 24 15:51:40 2020 +0600
+
+    Merge pull request #51 from mirsoft-kg/develop
+    
+    Develop
+
+commit b4092dca90a5fefae17fce9d4bad95f60bb8ef28 (mirsoft/develop)
+Merge: fcb3a95 69d6f41
+Author: Marat <32132049+Fray23@users.noreply.github.com>
+Date:   Thu Jan 23 16:15:51 2020 +0600
+
+    Merge pull request #50 from Fray23/serv_image_type
+    
+    image type
+
+commit 69d6f410595e306559d09e1e35c773b0c51548be
+Author: fray23 <mars6358@gmail.com>
+Date:   Thu Jan 23 16:11:29 2020 +0600
+
+    image type
+
+commit fcb3a95c54fdf301d9e4b0f05a359454b70d41c7
+Merge: d5c3009 d594667
+Author: Marat <32132049+Fray23@users.noreply.github.com>
+Date:   Thu Jan 23 02:27:58 2020 +0600
+
+ulan@ulan:~/project/serv_kysgyzstan_party$ git status
+На ветке master
+Ваша ветка опережает «mirsoft/master» на 1 коммит.
+  (используйте «git push», чтобы опубликовать ваши локальные коммиты)
+
+нечего коммитить, нет изменений в рабочем каталоге
+ulan@ulan:~/project/serv_kysgyzstan_party$ git reset HEAD~1
+Непроиндексированные изменения после сброса:
+M	web/party/locations/admin.py
+M	web/party/locations/models.py
+M	web/party/locations/serializers.py
+M	web/party/locations/views.py
+M	web/party/urls.py
+ulan@ulan:~/project/serv_kysgyzstan_party$ ga
+ga: команда не найдена
+ulan@ulan:~/project/serv_kysgyzstan_party$ git add .
+ulan@ulan:~/project/serv_kysgyzstan_party$ git status
+На ветке master
+Ваша ветка обновлена в соответствии с «mirsoft/master».
+
+Изменения, которые будут включены в коммит:
+  (используйте «git reset HEAD <файл>…», чтобы убрать из индекса)
+
+	изменено:      web/party/locations/admin.py
+	новый файл:    web/party/locations/migrations/0006_region_district.py
+	новый файл:    web/party/locations/migrations/0007_auto_20200131_0830.py
+	изменено:      web/party/locations/models.py
+	изменено:      web/party/locations/serializers.py
+	изменено:      web/party/locations/views.py
+	изменено:      web/party/urls.py
+
+ulan@ulan:~/project/serv_kysgyzstan_party$ git stash
+Рабочий каталог и состояние индекса сохранены WIP on master: 0e1e1f0 Merge pull request #51 from mirsoft-kg/develop
+ulan@ulan:~/project/serv_kysgyzstan_party$ git checkout develop 
+Ветка «develop» отслеживает внешнюю ветку «develop» из «mirsoft».
+Переключено на новую ветку «develop»
+ulan@ulan:~/project/serv_kysgyzstan_party$ git checkout -b districts
+Переключено на новую ветку «districts»
+ulan@ulan:~/project/serv_kysgyzstan_party$ git stash pop
+На ветке districts
+Изменения, которые будут включены в коммит:
+  (используйте «git reset HEAD <файл>…», чтобы убрать из индекса)
+
+	новый файл:    web/party/locations/migrations/0006_region_district.py
+	новый файл:    web/party/locations/migrations/0007_auto_20200131_0830.py
+
+Изменения, которые не в индексе для коммита:
+  (используйте «git add <файл>…», чтобы добавить файл в индекс)
+  (используйте «git checkout -- <файл>…», чтобы отменить изменения
+   в рабочем каталоге)
+
+	изменено:      web/party/locations/admin.py
+	изменено:      web/party/locations/models.py
+	изменено:      web/party/locations/serializers.py
+	изменено:      web/party/locations/views.py
+	изменено:      web/party/urls.py
+
+Отброшено refs/stash@{0} (4accc7a0cf4ed6de5d4706b8bcca86405a7554b7)
+ulan@ulan:~/project/serv_kysgyzstan_party$ git add .
+ulan@ulan:~/project/serv_kysgyzstan_party$ git commit
+[districts 724f7dc] add districts endpoints
+ 7 files changed, 188 insertions(+), 9 deletions(-)
+ create mode 100644 web/party/locations/migrations/0006_region_district.py
+ create mode 100644 web/party/locations/migrations/0007_auto_20200131_0830.py
+ulan@ulan:~/project/serv_kysgyzstan_party$ git push -u origin districts
+Username for 'https://github.com': skrykg
+Password for 'https://skrykg@github.com': 
+Перечисление объектов: 23, готово.
+Подсчет объектов: 100% (23/23), готово.
+При сжатии изменений используется до 4 потоков
+Сжатие объектов: 100% (13/13), готово.
+Запись объектов: 100% (13/13), 3.36 KiB | 1.68 MiB/s, готово.
+Всего 13 (изменения 7), повторно использовано 0 (изменения 0)
+remote: Resolving deltas: 100% (7/7), completed with 6 local objects.
+remote: 
+remote: Create a pull request for 'districts' on GitHub by visiting:
+remote:      https://github.com/skrykg/serv_kysgyzstan_party/pull/new/districts
+remote: 
+To https://github.com/skrykg/serv_kysgyzstan_party.git
+ * [new branch]      districts -> districts
+Ветка «districts» отслеживает внешнюю ветку «districts» из «origin».
+ulan@ulan:~/project/serv_kysgyzstan_party$ 
+
